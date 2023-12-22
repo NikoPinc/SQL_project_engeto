@@ -6,7 +6,7 @@ SELECT
 	cpib.name AS branch_name
 FROM czechia_payroll cp
 LEFT JOIN czechia_payroll_industry_branch cpib ON cpib.code = cp.industry_branch_code
-WHERE value_type_code = 5958
+WHERE value_type_code = 5958 AND payroll_year BETWEEN 2006 AND 2018
 )
 
 CREATE TABLE table_b
