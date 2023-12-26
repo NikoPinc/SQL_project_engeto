@@ -5,7 +5,7 @@ SELECT
 	cp.payroll_year AS payroll_year,
 	cpib.name AS branch_name
 FROM czechia_payroll cp
-LEFT JOIN czechia_payroll_industry_branch cpib ON cpib.code = cp.industry_branch_code
+JOIN czechia_payroll_industry_branch cpib ON cpib.code = cp.industry_branch_code
 WHERE value_type_code = 5958 AND payroll_year BETWEEN 2006 AND 2018
 )
 
@@ -18,14 +18,14 @@ SELECT
 	cpc.price_unit AS price_unit,
 	YEAR(date_from) AS price_year
 FROM czechia_price cp
-LEFT JOIN czechia_price_category cpc ON cpc.code = cp.category_code
+JOIN czechia_price_category cpc ON cpc.code = cp.category_code
 )
 
 CREATE TABLE t_nikola_pincova_project_SQL_primary_final
 AS(
 SELECT *
 FROM table_a ta
-LEFT JOIN table_b tb ON tb.price_year = ta.payroll_year
+JOIN table_b tb ON tb.price_year = ta.payroll_year
 )
 
 
