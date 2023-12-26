@@ -1,4 +1,11 @@
-CREATE TABLE table_a
+CREATE TABLE t_nikola_pincova_project_SQL_primary_final
+AS(
+SELECT *
+FROM table_a ta
+JOIN table_b tb ON tb.price_year = ta.payroll_year
+)
+
+WITH table_a
 AS(
 SELECT 
 	cp.value AS pay,
@@ -9,7 +16,7 @@ JOIN czechia_payroll_industry_branch cpib ON cpib.code = cp.industry_branch_code
 WHERE value_type_code = 5958 AND payroll_year BETWEEN 2006 AND 2018
 )
 
-CREATE TABLE table_b
+With table_b
 AS(
 SELECT 
 	cp.value AS price,
@@ -20,12 +27,4 @@ SELECT
 FROM czechia_price cp
 JOIN czechia_price_category cpc ON cpc.code = cp.category_code
 )
-
-CREATE TABLE t_nikola_pincova_project_SQL_primary_final
-AS(
-SELECT *
-FROM table_a ta
-JOIN table_b tb ON tb.price_year = ta.payroll_year
-)
-
 
