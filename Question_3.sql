@@ -18,7 +18,7 @@ ORDER BY food_category,payroll_year
 SELECT 
 	price_year,
 	food_category,
-	concatprice,
+	price,
 	previous_price,
 	annual_percentage_increase
 FROM table_a
