@@ -1,3 +1,4 @@
+-- Discrord Nikola P. / Nico#0240
 With table_a AS(
 SELECT 
 	price_year AS Year,	

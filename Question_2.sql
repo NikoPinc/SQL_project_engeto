@@ -1,3 +1,4 @@
+-- Discrord Nikola P. / Nico#0240
 SELECT 
 	payroll_year,
 	food_category,

@@ -1,3 +1,4 @@
+-- Discrord Nikola P. / Nico#0240
 SELECT 
 	t1.payroll_year,
 	t2.country, 

@@ -1,3 +1,4 @@
+-- Discrord Nikola P. / Nico#0240
 WITH table_a
 AS (
 SELECT 

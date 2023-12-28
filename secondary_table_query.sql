@@ -1,3 +1,4 @@
+-- Discrord Nikola P. / Nico#0240
 CREATE TABLE t_nikola_pincova_project_SQL_secondary_final AS
 (
 SELECT 
