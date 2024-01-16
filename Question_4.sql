@@ -1,21 +1,29 @@
--- Discrord Nikola P. / Nico#0240
-With table_a AS(
+-- Discord Nikola P. / Nico#0240
+WITH table_a AS(
 SELECT 
-	price_year AS Year,	
-	SUM(price) AS price,
-    LAG(SUM(price)) OVER (ORDER BY price_year) AS previous_price,
-    ROUND(
-    ((SUM(price) - LAG(SUM(price)) OVER (ORDER BY price_year)) / LAG(SUM(price)) OVER (ORDER BY price_year)) * 100,2) AS annual_percentage_increase							
-FROM t_nikola_pincova_project_sql_primary_final 
-WHERE food_category IS NOT NULL
-GROUP BY payroll_year
-ORDER BY payroll_year
+	price_year AS year,	
+	AVG(price) AS price,
+    ROUND(((AVG(price) - LAG(AVG(price)) OVER (ORDER BY price_year)) / LAG(AVG(price)) OVER (ORDER BY price_year)) * 100,2) AS price_increase,
+    ROUND(((AVG(pay) - LAG(AVG(pay)) OVER (ORDER BY price_year)) / LAG(AVG(pay)) OVER (ORDER BY price_year)) * 100,2) AS pay_increase,
+    AVG(pay) AS pay
+FROM 
+	t_nikola_pincova_project_sql_primary_final 
+GROUP BY 
+	price_year
+ORDER BY 
+	price_year
 )
 SELECT
- YEAR,
- ROUND(price) AS price,
- ROUND(previous_price) AS previous_price,
- annual_percentage_increase
-FROM table_a
-GROUP BY year
-ORDER BY annual_percentage_increase desc;
+	year,
+ 	ROUND(price) AS "average price",
+ 	price_increase AS "annual price increase",
+ 	ROUND(pay) AS "average pay",
+ 	pay_increase AS "annual pay increase",
+ 	price_increase - pay_increase AS "difference in price/pay"
+FROM 
+	table_a
+GROUP BY 
+	year
+ORDER BY 
+	price_increase - pay_increase DESC
+	

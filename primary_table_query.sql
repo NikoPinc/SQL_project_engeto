@@ -1,4 +1,4 @@
--- Define the Common Table Expressions (CTEs)
+-- Discord Nikola P. / Nico#0240
 CREATE TABLE t_nikola_pincova_project_SQL_primary_final AS
 WITH table_a AS(
 SELECT

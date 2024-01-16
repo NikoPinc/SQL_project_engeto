@@ -1,6 +1,10 @@
--- Discrord Nikola P. / Nico#0240
-SELECT ROUND(AVG(pay)) AS average_pay, branch_name, payroll_year 
-FROM t_nikola_pincova_project_sql_primary_final
-WHERE branch_name IS NOT NULL AND payroll_year NOT BETWEEN 2007 AND 2017
-GROUP BY branch_name, payroll_year
-ORDER BY branch_name, payroll_year 
+-- Discord Nikola P. / Nico#0240
+SELECT
+	payroll_year,
+	ROUND(pay) AS pay,
+	branch_name,
+    ROUND(((pay - LAG(pay) OVER (PARTITION  BY branch_name ORDER BY payroll_year)) / LAG(pay) OVER (PARTITION  BY branch_name ORDER BY payroll_year)) * 100,2) AS increase							
+FROM
+	t_nikola_pincova_project_sql_primary_final
+GROUP BY 
+	branch_name, payroll_year 

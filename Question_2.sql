@@ -1,4 +1,4 @@
--- Discrord Nikola P. / Nico#0240
+-- Discord Nikola P. / Nico#0240
 SELECT 
 	payroll_year,
 	food_category,
@@ -9,9 +9,8 @@ SELECT
 FROM 
 	t_nikola_pincova_project_sql_primary_final 
 WHERE
-	(payroll_year NOT BETWEEN 2007 AND 2017 AND food_category LIKE '%Chléb%')
-OR	
-	(payroll_year NOT BETWEEN 2007 AND 2017 AND food_category LIKE '%mléko%')
+	(payroll_year NOT BETWEEN 2007 AND 2017 AND food_category LIKE '%chléb%')
+OR	(payroll_year NOT BETWEEN 2007 AND 2017 AND food_category LIKE '%mléko%')
 GROUP BY 
 	food_category,payroll_year
 ORDER BY 
